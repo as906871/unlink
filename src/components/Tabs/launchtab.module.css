@@ -1,0 +1,104 @@
+.bg_spacex {
+  background-image: url('../../assest/pacex2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.paddd{
+  border-radius: 24px;
+}
+@media (max-width: 624px) {
+  .paddd{
+    padding: 20px;
+  }
+}
+
+.facility_card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  color: white;
+  height: 140px;
+}
+
+.facility_card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.facility_card:hover img {
+  transform: scale(1.1);
+}
+
+.rocket_card img {
+  transition: transform 0.5s ease;
+}
+
+.rocket_card:hover img {
+  transform: scale(1.1);
+}
+
+
+
+
+.facility_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.55); */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.facility_title {
+  font-size: 1.3rem; 
+  font-weight: bold;
+  margin: 0;
+}
+
+.facility_subtitle {
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.facility_info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate_float_and_rotate {
+  animation: float 3s ease-in-out infinite, rotate 10s linear infinite;
+}
