@@ -1,0 +1,104 @@
+.text_3d {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #ffffff; 
+    position: relative;
+    display: inline-block;
+    perspective: 1000px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: text3d-color 5s infinite linear;
+  }
+  
+  .text_3d::before,
+  .text_3d::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .text_3d::before {
+    color: rgba(255, 0, 255, 0.8);
+    z-index: -2;
+    transform: translateZ(-2px);
+    animation: text3d-shadow1 5s infinite;
+  }
+  
+  .text_3d::after {
+    color: rgba(0, 255, 255, 0.8); 
+    z-index: -1;
+    transform: translateZ(-4px);
+    animation: text3d-shadow2 5s infinite;
+  }
+  
+  @keyframes text3d-animation {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: rotateX(15deg) rotateY(15deg);
+    }
+    50% {
+      transform: rotateX(30deg) rotateY(30deg);
+    }
+    75% {
+      transform: rotateX(15deg) rotateY(15deg);
+    }
+    100% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+  }
+  
+  @keyframes text3d-shadow1 {
+    0% {
+      transform: translateZ(-2px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: translateZ(-2px) rotateX(15deg) rotateY(15deg);
+    }
+    50% {
+      transform: translateZ(-2px) rotateX(30deg) rotateY(30deg);
+    }
+    75% {
+      transform: translateZ(-2px) rotateX(15deg) rotateY(15deg);
+    }
+    100% {
+      transform: translateZ(-2px) rotateX(0deg) rotateY(0deg);
+    }
+  }
+  
+  @keyframes text3d-shadow2 {
+    0% {
+      transform: translateZ(-4px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: translateZ(-4px) rotateX(15deg) rotateY(15deg);
+    }
+    50% {
+      transform: translateZ(-4px) rotateX(30deg) rotateY(30deg);
+    }
+    75% {
+      transform: translateZ(-4px) rotateX(15deg) rotateY(15deg);
+    }
+    100% {
+      transform: translateZ(-4px) rotateX(0deg) rotateY(0deg);
+    }
+  }
+  
+  @keyframes text3d-color {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .text_3d {
+    animation: text3d-animation 5s infinite, text3d-color 5s infinite linear;
+  }  

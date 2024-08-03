@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { IoHomeOutline } from 'react-icons/io5';
 import { LiaRocketSolid } from 'react-icons/lia';
+import { GiCrossMark } from "react-icons/gi";
 
-const Navbar = () => {
+const Navbar = ({  closeSidebar }) => {
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState(location.pathname);
+
+  const [isMobileView, setIsMobileView] = useState(false);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 450);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setSelectedItem(location.pathname);
+  }, [location.pathname]);
 
   const handleItemClick = (path) => {
     setSelectedItem(path);
@@ -14,6 +32,9 @@ const Navbar = () => {
   return (
     <div className="h-screen flex">
       <div className="bg-white text-[#12121E] font-inter flex flex-col justify-between w-full md:w-64 lg:w-80 transition-transform">
+      {isMobileView && (
+          <button  onClick={closeSidebar} className="absolute top-0 right-0 mt-4 mr-4 text-2xl"><GiCrossMark /></button>
+        )}
         <div className="flex flex-col space-y-6 p-4">
           <div className="flex items-center space-x-2 mt-3">
             <div className="h-12 rounded-full flex justify-center items-center mt-16">
