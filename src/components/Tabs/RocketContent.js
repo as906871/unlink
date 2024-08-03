@@ -12,7 +12,7 @@ const RocketContent = () => {
     const [selectedRocket, setSelectedRocket] = useState(null);
   
     useEffect(() => {
-      dispatch(fetchRockets());
+      dispatch(fetchRockets()); 
     }, [dispatch]);
   
     if (status === "loading") {
